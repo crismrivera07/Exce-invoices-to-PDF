@@ -19,7 +19,9 @@ class InvoicePDF(FPDF):
         # Printing page number:
         self.cell(0, 10, f"Page {self.page_no()}/{{nb}}", align="C")
 
-pdf = InvoicePDF()
-pdf.add_page()
-pdf.set_font("Helvetica", size=12)
-pdf.output("Exel Generator.pdf")
+def add_invoice_table(pdf,records):
+    for record in records:
+        pdf.multi_cell(0, 10, record["Invoice ID"], new_x="LMARGIN", new_y="NEXT")
+        
+        pdf.multi_cell(0, 10, record["Client Name"], new_x="LMARGIN", new_y="NEXT")
+
