@@ -9,7 +9,7 @@ class InvoicePDF(FPDF):
         # Printing title:
         self.cell(40, 10, "Excel Report", border=1, align="C")
         # Performing a line break:
-        self.ln(20)
+        self.ln(15)
 
     def footer(self):
         # Position cursor at 1.5 cm from bottom:
@@ -21,7 +21,7 @@ class InvoicePDF(FPDF):
 
 def add_invoice_table(pdf,records):
     for record in records:
-        pdf.multi_cell(0, 10, record["Invoice ID"], new_x="LMARGIN", new_y="NEXT")
-        
-        pdf.multi_cell(0, 10, record["Client Name"], new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(40, 10, record["Invoice ID"], align="L")
+        pdf.cell(60, 10, record["Client Name"],new_y="NEXT", new_x="LMARGIN")
+
 

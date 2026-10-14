@@ -54,25 +54,9 @@ print(total/count)
 #print(df.groupby(['Client Name'])['Amount'].mean())
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
 pdf = InvoicePDF()
 pdf.add_page()
 pdf.set_font("Helvetica", size=12)
+pdf.ln(1)
 add_invoice_table(pdf, records)
-pdf.output("Exel Generator.pdf")"""
+pdf.output("Exel Generator.pdf")
