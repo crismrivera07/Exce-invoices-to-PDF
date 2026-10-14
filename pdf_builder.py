@@ -21,7 +21,11 @@ class InvoicePDF(FPDF):
 
 def add_invoice_table(pdf,records):
     for record in records:
-        pdf.cell(40, 10, record["Invoice ID"], align="L")
-        pdf.cell(60, 10, record["Client Name"],new_y="NEXT", new_x="LMARGIN")
-
+        pdf.cell(22, 15, record["Invoice ID"], align="L")
+        pdf.cell(52, 15, record["Client Name"])
+        pdf.cell(52, 15, record["Item Description"])
+        pdf.cell(22, 15, str(record["Quantity"]))
+        pdf.cell(22, 15, str(record["Unit Price"]))
+        pdf.cell(22, 15, str(record["Amount"]), new_y="NEXT", new_x="LMARGIN")
+        
 
