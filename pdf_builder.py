@@ -27,5 +27,13 @@ def add_invoice_table(pdf,records):
         pdf.cell(22, 15, str(record["Quantity"]))
         pdf.cell(22, 15, str(record["Unit Price"]))
         pdf.cell(22, 15, str(record["Amount"]), new_y="NEXT", new_x="LMARGIN")
-        
+
+
+def add_summary(pdf, total, count, pending):
+    pdf.ln(10)
+    pdf.set_font("helvetica", style="B", size=12)
+    pdf.cell(60, 10, "Summary", align="L")
+    pdf.cell(65,10, str(f"Total: {total}"))
+    pdf.cell(70, 10, str(f"Total Items: {count}"), new_y="NEXT", new_x="LMARGIN")
+    
 

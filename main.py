@@ -2,7 +2,8 @@
 import pandas as pd
 from fpdf import FPDF
 from fpdf.fonts import FontFace
-from pdf_builder import InvoicePDF, add_invoice_table
+from pdf_builder import InvoicePDF, add_invoice_table, add_summary
+from functions import file_generator
 
 
 df = pd.read_excel("Data/sample_invoices_small.xlsx", sheet_name = "Invoices")
@@ -43,15 +44,6 @@ print()
 print(total/count)
 
 
-#print("Total Item installs")
-#print(df.groupby(['Client Name','Item Description'])['Quantity'].sum())
-
-
-#print("invoice count")
-#print(df.groupby(['Client Name','Invoice ID'])['Amount'].count())
-
-#print(df['Amount'].dtype)
-#print(df.groupby(['Client Name'])['Amount'].mean())
 
 
 pdf = InvoicePDF()
@@ -59,4 +51,5 @@ pdf.add_page()
 pdf.set_font("Helvetica", size=12)
 pdf.ln(1)
 add_invoice_table(pdf, records)
-pdf.output("Exel Generator.pdf")
+add_summary(pdf, total, count, pending)
+pdf.output(file_generator())
